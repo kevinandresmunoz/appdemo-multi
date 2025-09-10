@@ -1,6 +1,6 @@
 // Configuración del API (solo Flask backend)
 const API_CONFIG = {
-    baseUrl: 'http://localhost:5000', // URL del backend Flask
+    baseUrl: 'https://appdemo-multi.onrender.com', // URL del backend Flask
     endpoints: {
         // Productos
         products: '/api/products',
