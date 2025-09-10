@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Gestor de Productos</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Gestión del negocio- Admin</div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">Panel</a></li>
+                <li><a href="../public/index.html">Ver Catálogo</a></li>
+                <li><a href="#" id="logout-btn">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Panel de Administración</h1>
+            </div>
+
+            <!-- Tabs de navegación -->
+            <div class="dashboard-tabs">
+                <button class="tab-button active" data-tab="products">Productos</button>
+                <button class="tab-button" data-tab="services">Servicios</button>
+                <button class="tab-button" data-tab="contact">Información de Contacto</button>
+            </div>
+
+            <!-- Contenido de Productos -->
+            <div id="products-tab" class="tab-content active">
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" id="add-product-btn">Agregar Producto</button>
+                    <button class="btn btn-secondary" id="edit-product-btn" style="display: none;">Editar Producto</button>
+                    <button class="btn btn-danger" id="delete-product-btn" style="display: none;">Eliminar Producto</button>
+                </div>
+
+                <!-- Formulario para agregar/editar producto -->
+                <div id="product-form-container" style="display: none;">
+                    <div class="admin-form">
+                        <h3 id="product-form-title">Agregar Producto</h3>
+                        <form id="product-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-name">Nombre:</label>
+                                    <input type="text" id="product-name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-price">Precio:</label>
+                                    <input type="number" id="product-price" name="price" step="0.01" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="product-stock">Stock:</label>
+                                    <input type="number" id="product-stock" name="stock" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="product-image">Imagen del Producto:</label>
+                                    <input type="file" id="product-image" name="image" accept="image/*">
+                                    <div id="product-image-preview" style="margin-top: 10px; display: none;">
+                                        <img id="product-preview-img" src="" alt="Vista previa" style="max-width: 150px; max-height: 150px; border-radius: 5px;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row full-width">
+                                <div class="form-group">
+                                    <label for="product-description">Descripción:</label>
+                                    <textarea id="product-description" name="description" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                                <button type="button" class="btn btn-secondary" id="product-cancel-btn">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista de productos -->
+                <div id="admin-products-grid" class="products-grid">
+                    <!-- Los productos se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Contenido de Servicios -->
+            <div id="services-tab" class="tab-content">
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" id="add-service-btn">Agregar Servicio</button>
+                    <button class="btn btn-secondary" id="edit-service-btn" style="display: none;">Editar Servicio</button>
+                    <button class="btn btn-danger" id="delete-service-btn" style="display: none;">Eliminar Servicio</button>
+                </div>
+
+                <!-- Formulario para agregar/editar servicio -->
+                <div id="service-form-container" style="display: none;">
+                    <div class="admin-form">
+                        <h3 id="service-form-title">Agregar Servicio</h3>
+                        <form id="service-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="service-name">Nombre del Servicio:</label>
+                                    <input type="text" id="service-name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="service-price">Precio:</label>
+                                    <input type="number" id="service-price" name="price" step="0.01" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="service-duration">Duración:</label>
+                                    <input type="text" id="service-duration" name="duration" placeholder="Ej: 1 hora, 30 minutos">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="service-image">Imagen del Servicio:</label>
+                                    <input type="file" id="service-image" name="image" accept="image/*">
+                                    <div id="service-image-preview" style="margin-top: 10px; display: none;">
+                                        <img id="service-preview-img" src="" alt="Vista previa" style="max-width: 150px; max-height: 150px; border-radius: 5px;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row full-width">
+                                <div class="form-group">
+                                    <label for="service-description">Descripción:</label>
+                                    <textarea id="service-description" name="description" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Guardar Servicio</button>
+                                <button type="button" class="btn btn-secondary" id="service-cancel-btn">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista de servicios -->
+                <div id="admin-services-grid" class="products-grid">
+                    <!-- Los servicios se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Contenido de Información de Contacto -->
+            <div id="contact-tab" class="tab-content">
+                <div class="admin-form">
+                    <h3>Configurar Información del Negocio</h3>
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="business-name">Nombre del Negocio:</label>
+                                <input type="text" id="business-name" name="business_name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="business-email">Email:</label>
+                                <input type="email" id="business-email" name="email">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="business-phone">Teléfono:</label>
+                                <input type="tel" id="business-phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="business-whatsapp">WhatsApp:</label>
+                                <input type="tel" id="business-whatsapp" name="whatsapp" placeholder="573001234567">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row full-width">
+                            <div class="form-group">
+                                <label for="business-address">Dirección:</label>
+                                <input type="text" id="business-address" name="address">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row full-width">
+                            <div class="form-group">
+                                <label for="business-description">Descripción del Negocio:</label>
+                                <textarea id="business-description" name="description" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row full-width">
+                            <div class="form-group">
+                                <label for="business-hours">Horarios de Atención:</label>
+                                <textarea id="business-hours" name="business_hours" rows="2" placeholder="Lunes a Viernes: 9:00 AM - 6:00 PM&#10;Sábados: 9:00 AM - 2:00 PM"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="business-facebook">Facebook:</label>
+                                <input type="url" id="business-facebook" name="facebook" placeholder="https://facebook.com/tu-negocio">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="business-instagram">Instagram:</label>
+                                <input type="url" id="business-instagram" name="instagram" placeholder="https://instagram.com/tu-negocio">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar Información</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../public/js/config.js"></script>
+    <script src="js/business-name-admin.js"></script>
+    <script src="js/footer-admin.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

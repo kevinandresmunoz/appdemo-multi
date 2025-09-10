@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Productos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Gestor de Productos</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Productos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="../admin/login.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="hero-section">
+                <h1>Nuestros Productos</h1>
+                <p>Gestiona y consulta tu catálogo de productos</p>
+            </section>
+
+            <section class="products-section">
+                <h2>Catálogo de Productos</h2>
+                <div id="products-grid" class="products-grid">
+                    <!-- Los productos se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/business-name.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

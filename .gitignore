@@ -1,0 +1,37 @@
+# Archivos de entorno
+.env
+.env.local
+.env.production
+
+# Dependencias Python
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+*.pyo
+*.pyd
+
+# Archivos temporales
+*.log
+*.tmp
+*~
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel
+
+# Node modules (si los hay)
+node_modules/
+
+# Archivos de backup
+*backup*
+*.bak
+*.old

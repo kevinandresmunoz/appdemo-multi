@@ -1,0 +1,12 @@
+{
+  "name": "gestor-productos",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de productos y servicios con Flask y Supabase",
+  "scripts": {
+    "dev": "cd backend && python app.py",
+    "start": "cd backend && python app.py"
+  },
+  "keywords": ["flask", "supabase", "productos", "servicios", "gestión"],
+  "author": "Tu Nombre",
+  "license": "MIT"
+}
