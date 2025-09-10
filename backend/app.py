@@ -14,7 +14,7 @@ load_dotenv()
 # Inicializar Flask
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-key-change-in-production")
-CORS(app, supports_credentials=True, origins=['http://localhost:3000', 'http://127.0.0.1:3000'])
+CORS(app, supports_credentials=True, origins=['https://appdemo-frontend.onrender.com', 'https://appdemo-frontend.onrender.com'])
 
 # Configurar Supabase (solo en backend)
 SUPABASE_URL = os.getenv("SUPABASE_URL")
